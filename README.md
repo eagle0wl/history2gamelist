@@ -1,9 +1,9 @@
 ## はじめに
 MAMEの各種データベースからEmulationStationの `gamelist.xml` を生成して、リストにあるROMイメージだけをまとめます。  
 アーケードエミュレータは複数ありますが、Wikiで推奨されている  
-* lr-mame2003
-* lr-fba-next
-* mame4all
+* `lr-mame2003`
+* `lr-fba-next`
+* `mame4all`
 
 に対応しています。Wikiによると、RPi2or3では `lr-mame2003` か `lr-fba-next` 、RPi0or1では `mame4all` を使うことが推奨されています。  
 しかし、**私はRPiのバージョンによらず `mame4all` を使うべきであると考えます。**理由は後述。  
@@ -39,7 +39,7 @@ http://www.geocities.jp/mamelistjp/
 https://github.com/RetroPie/RetroPie-Setup/wiki/Managing-ROMs  
 RPi動作確認済みタイトルの抽出とROMの親子関係の確認に使います。  
 下記３種類のCompatibility Listのスプレッドシートを保存してください。  
-_ファイル→形式を指定してダウンロード→タブ区切りの値(.tsv、現在のシート)  _
+ファイル → 形式を指定してダウンロード → タブ区切りの値(.tsv、現在のシート)
 
 ファイル名は以下の通りにリネームしてください。  
 `lr-mame2003 → lr-mame2003.tsv`  
@@ -48,10 +48,12 @@ _ファイル→形式を指定してダウンロード→タブ区切りの値(
 
 ### 2) 以下の.DATを使ってclrmameproなどでリビルドしたROMイメージを収めたフォルダ  
 DATファイルは以下参照  
-https://github.com/RetroPie/RetroPie-Setup/wiki/Managing-ROMs
+https://github.com/RetroPie/RetroPie-Setup/wiki/Managing-ROMs  
+clrmameproはここでは解説しません。  
 
 ### 3) ROMに対応する画像イメージ群を収めたフォルダ(スクショ推奨)  
-ROMイメージを格納するzipファイルに対応する画像ファイルが無い場合は、画像なしとして扱います。  
+ROMイメージを格納するzipファイルに対応する画像ファイルが無い場合は、画像なしとして扱います。拡張子は.pngと.jpgがある場合は.pngを優先します。.jpegは認識しません。
+
 
 ##実行方法
 pythonが必要です。MacやLinuxであれば最初から入っていますが、WindowsであればPython2.7をインストールしてください。  
@@ -64,11 +66,11 @@ pythonが必要です。MacやLinuxであれば最初から入っていますが
 `<imagepath>`  
   ROMに対応する画像イメージ群を収めたフォルダ  
 `<emulator>`  
-  対応エミュレータ。"lr-mame2003", "lr-fba-next", "mame4all" のいずれか。  
-  "mame4all" 推奨。""（ダブルクォーテーション）は入力しない。  
+  対応エミュレータ。`"lr-mame2003"`, `"lr-fba-next"`, `"mame4all"` のいずれか。  
+  `"mame4all"` 推奨。""（ダブルクォーテーション）は入力しない。  
 `<piver>`  
-  Raspberry Piのバージョン。"0", "1", "2", "3" のいずれか。  
-  "0"と"1"は同じものとして扱う。""（ダブルクォーテーション）は入力しない。  
+  Raspberry Piのバージョン。`"0"`, `"1"`, `"2"`, `"3"` のいずれか。""（ダブルクォーテーション）は入力しない。  
+  Compatibility ListではRPi0はRPi1と同一ハードとみなされているので`"0"`を入れても`"1"`と同じ結果になる。  
   
 実行例：  
 `>python history2gamelist.py X:\MAME037b5\ X:\MAME\snap\ mame4all 2`  
@@ -88,11 +90,10 @@ pythonが必要です。MacやLinuxであれば最初から入っていますが
 
 実行後に生成されたファイル群は、RetroPieの所定の位置に転送してください。　　
 
-##コメント
-RetroPieのWikiによると、RPi2or3では `lr-mame2003` か `lr-fba-next` 、RPi0or1では `mame4all `を使うことが推奨されています。しかしながら、Compatibility Listで動作確認済みとなっているタイトル数は、RPi2の `mame4all` に集中しており、RPi0,1,3や他のエミュレータでは
-動作確認すらまともに行われていないようです。 RPi2で動くものはRPi3でも動くと思うので、神経質になる必要はないと思いますが、RPi0を使ってオリジナルの携帯ゲーム機を作ろうというのであれば、動作リストが極端に少ないので自分で確認するしかないと思います。 
+##本家Wikiに関する私見
+RetroPieのWikiによると、RPi2or3では `lr-mame2003` か `lr-fba-next` 、RPi0or1では `mame4all `を使うことが推奨されています。しかしながら、Compatibility Listで動作確認済みとなっているタイトル数は、RPi2の `mame4all` に集中しており、RPi0,1,3や他のエミュレータでは動作確認すらまともに行われていないようです。 RPi2で動くものはRPi3でも動くと思うので神経質になる必要はないと思いますが、現時点でのCompatibility ListはRPi0とRPi1を同一ハードとみなしています。私はRPi0とRPi1を所有していませんが明らかに違うハードだと思いますし、ROMの動作率も違うと思います。RPi0をにメイン基板にして液晶パネルやハウジングを用意して、オリジナルの携帯ゲーム機を作りたいというのであれば、動作リストが極端に少ないので自分でROMの動作確認をするしかないと思います。 
 
-※参考：Compatibility Listで挙げられているタイトルと、"OK"(=動作確認済み)となっている数の比較 (2016年10月の情報)  
+※参考：Compatibility Listで挙げられているタイトルと、"OK"(=動作確認済み)となっている数の比較 (2016年10月調べ)  
   
 `lr-mame2003 (4720タイトル)`  
 `  RPi1 = 0`  
