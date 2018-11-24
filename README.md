@@ -37,6 +37,7 @@ http://www.e2j.net/downloads.html
 MAME32 Plus! 0.146r5027用 Japanese Game List  
 http://www.geocities.jp/mamelistjp/  
 ※文字コードはShift-JISのままにしてください。  
+geocities.jpは2019年3月閉鎖予定
 
 ・RPi動作チェック済のスプレッドシート(Compatibility List)  
 https://github.com/RetroPie/RetroPie-Setup/wiki/Arcade  
@@ -101,10 +102,10 @@ https://www.python.org/downloads/
 Compatibility Listで挙がっているタイトルの数と、そのうちOK（動作確認済み）となっているタイトル数  
 2018/11/25調べ  
 
-`               RPi0/1          RPi2          RPi3`  
-`lr-fbalpha    17/4896      198/4896     1051/4896`  
-`lr-mame2003   56/4720      514/4720     2676/4720`  
-`Mame4all     225/2271     1850/2271      339/2271`  
-`pifba        111/ 684      274/ 684       80/ 684`  
+`_______________RPi0/1__________RPi2__________RPi3`  
+`lr-fbalpha____17/4896______198/4896_____1051/4896`  
+`lr-mame2003___56/4720______514/4720_____2676/4720`  
+`Mame4all_____225/2271_____1850/2271______339/2271`  
+`pifba________111/ 684______274/ 684_______80/ 684`  
 
 手持ちのRPiのバージョンにあわせてエミュレータを選びましょう。  
